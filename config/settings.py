@@ -37,6 +37,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # Наши библиотеки
+    'rest_framework',              # DRF — для создания API
+    'rest_framework_simplejwt',    # JWT авторизация
+    'django_filters',              # Фильтрация
+    'djoser',                      # Регистрация/вход
+    'corsheaders',                 # CORS
 ]
 
 MIDDLEWARE = [
