@@ -88,8 +88,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'skymarket',      # имя базы данных
-        'USER': 'postgres',       # пользователь
-        'PASSWORD': 'postgres',   # пароль
+        'USER': 'makhailya',       # пользователь
+        'PASSWORD': '',   # пароль
         'HOST': 'localhost',
         'PORT': '5432',
     }
