@@ -145,3 +145,6 @@ REST_FRAMEWORK = {
 
 # Разрешаем запросы со всех доменов (для разработки)
 CORS_ALLOW_ALL_ORIGINS = True
+
+# Говорим Django использовать нашу модель пользователя
+AUTH_USER_MODEL = 'users.User'
