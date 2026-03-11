@@ -44,6 +44,10 @@ INSTALLED_APPS = [
     'django_filters',              # Фильтрация
     'djoser',                      # Регистрация/вход
     'corsheaders',                 # CORS
+
+    # Наши приложения
+        'users',
+        'ads',
 ]
 
 MIDDLEWARE = [
