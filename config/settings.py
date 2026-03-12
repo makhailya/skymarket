@@ -148,3 +148,19 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 # Говорим Django использовать нашу модель пользователя
 AUTH_USER_MODEL = 'users.User'
+
+# Папка для загружаемых файлов (фото объявлений, аватары)
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
+
+DJOSER = {
+    # Входим по email
+    "LOGIN_FIELD": "email",
+
+    # Какие сериализаторы использовать
+    "SERIALIZERS": {
+        "user": "users.serializers.UserSerializer",
+        "current_user": "users.serializers.UserSerializer",
+        "user_create": "users.serializers.UserSerializer",
+    },
+}
