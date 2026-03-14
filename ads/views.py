@@ -1,11 +1,18 @@
 from rest_framework import viewsets, permissions, filters
 from rest_framework.decorators import action
 from rest_framework.response import Response
+from rest_framework.pagination import PageNumberPagination
 from django_filters.rest_framework import DjangoFilterBackend
 
 from .models import Ad, Review
 from .serializers import AdSerializer, AdDetailSerializer, ReviewSerializer
 from .permissions import IsOwnerOrAdmin
+
+
+class AdPagination(PageNumberPagination):
+    page_size = 10
+    page_size_query_param = 'page_size'
+    max_page_size = 100
 
 
 class AdViewSet(viewsets.ModelViewSet):
@@ -22,6 +29,8 @@ class AdViewSet(viewsets.ModelViewSet):
     """
 
     queryset = Ad.objects.all()
+    serializer_class = AdSerializer
+    pagination_class = AdPagination
     filter_backends = [DjangoFilterBackend, filters.SearchFilter]
     search_fields = ["title"]  # поиск по названию
 
