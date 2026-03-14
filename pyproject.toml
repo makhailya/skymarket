@@ -16,7 +16,8 @@ dependencies = [
     "django-cors-headers (>=4.9.0,<5.0.0)",
     "pillow (>=12.1.1,<13.0.0)",
     "drf-nested-routers (>=0.95.0,<0.96.0)",
-    "python-dotenv (>=1.2.2,<2.0.0)"
+    "python-dotenv (>=1.2.2,<2.0.0)",
+    "djangorestframework-stubs (>=3.16.8,<4.0.0)"
 ]
 
 
