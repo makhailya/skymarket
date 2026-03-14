@@ -1,5 +1,3 @@
-  version: '3.8'
-
 services:
 
   # Контейнер с базой данных
@@ -13,7 +11,7 @@ services:
       # Сохраняем данные БД даже после остановки контейнера
       - postgres_data:/var/lib/postgresql/data
     ports:
-      - "5432:5432"
+      - "5433:5432"
 
   # Контейнер с Django
   web:
