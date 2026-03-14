@@ -23,3 +23,11 @@ dependencies = [
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "pytest (>=9.0.2,<10.0.0)",
+    "pytest-django (>=4.12.0,<5.0.0)",
+    "factory-boy (>=3.3.3,<4.0.0)",
+    "coverage (>=7.13.4,<8.0.0)"
+]
