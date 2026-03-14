@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+
+  # Контейнер с базой данных
+  db:
+    image: postgres:15-alpine  # готовый образ PostgreSQL
+    environment:
+      POSTGRES_DB: skymarket       # имя базы данных
+      POSTGRES_USER: postgres      # пользователь
+      POSTGRES_PASSWORD: postgres  # пароль
+    volumes:
+      # Сохраняем данные БД даже после остановки контейнера
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  # Контейнер с Django
+  web:
+    build: .  # собираем из нашего Dockerfile
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      # Синхронизируем код — изменения видны сразу
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db  # сначала запускаем БД, потом Django
+    environment:
+      - DEBUG=True
+      - DB_HOST=db  # имя сервиса БД из docker-compose
+
+volumes:
+  postgres_data:  # именованный volume для хранения данных БД
