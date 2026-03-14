@@ -1,6 +1,8 @@
 import factory
-from .models import Ad, Review
+
 from users.factories import UserFactory
+
+from .models import Ad, Review
 
 
 class AdFactory(factory.django.DjangoModelFactory):

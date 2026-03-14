@@ -1,17 +1,17 @@
-from rest_framework import viewsets, permissions, filters
-from rest_framework.decorators import action
-from rest_framework.response import Response
-from rest_framework.pagination import PageNumberPagination
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import filters, permissions, viewsets
+from rest_framework.decorators import action
+from rest_framework.pagination import PageNumberPagination
+from rest_framework.response import Response
 
 from .models import Ad, Review
-from .serializers import AdSerializer, AdDetailSerializer, ReviewSerializer
 from .permissions import IsOwnerOrAdmin
+from .serializers import AdDetailSerializer, AdSerializer, ReviewSerializer
 
 
 class AdPagination(PageNumberPagination):
     page_size = 10
-    page_size_query_param = 'page_size'
+    page_size_query_param = "page_size"
     max_page_size = 100
 
 
@@ -66,8 +66,7 @@ class AdViewSet(viewsets.ModelViewSet):
         """
         serializer.save(author=self.request.user)
 
-    @action(detail=False, methods=["get"],
-            permission_classes=[permissions.IsAuthenticated])
+    @action(detail=False, methods=["get"], permission_classes=[permissions.IsAuthenticated])
     def me(self, request):
         """
         Дополнительный эндпоинт GET /ads/me/

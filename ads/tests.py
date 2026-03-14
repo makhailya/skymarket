@@ -1,6 +1,7 @@
 import pytest
-from rest_framework.test import APIClient
 from rest_framework import status
+from rest_framework.test import APIClient
+
 from ads.factories import AdFactory, ReviewFactory
 from users.factories import UserFactory
 
@@ -38,6 +39,7 @@ def admin_client(api_client, admin):
 
 
 # ==================== Тесты объявлений ====================
+
 
 class TestAdList:
     """Тесты для списка объявлений"""
@@ -160,6 +162,7 @@ class TestAdDelete:
 
 # ==================== Тесты отзывов ====================
 
+
 class TestReviews:
     """Тесты для отзывов"""
 
@@ -175,10 +178,7 @@ class TestReviews:
         """Авторизованный пользователь может написать отзыв"""
         ad = AdFactory()
 
-        response = authenticated_client.post(
-            f"/ads/{ad.id}/reviews/",
-            {"text": "Отличное объявление!"}
-        )
+        response = authenticated_client.post(f"/ads/{ad.id}/reviews/", {"text": "Отличное объявление!"})
 
         assert response.status_code == status.HTTP_201_CREATED
 
@@ -186,9 +186,6 @@ class TestReviews:
         """Неавторизованный пользователь НЕ может написать отзыв"""
         ad = AdFactory()
 
-        response = api_client.post(
-            f"/ads/{ad.id}/reviews/",
-            {"text": "Хочу написать отзыв"}
-        )
+        response = api_client.post(f"/ads/{ad.id}/reviews/", {"text": "Хочу написать отзыв"})
 
         assert response.status_code == status.HTTP_401_UNAUTHORIZED

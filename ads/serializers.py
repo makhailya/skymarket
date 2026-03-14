@@ -1,6 +1,7 @@
 from rest_framework import serializers
 
 from users.serializers import UserSerializer
+
 from .models import Ad, Review
 
 
@@ -72,4 +73,3 @@ class ReviewSerializer(serializers.ModelSerializer):
             "created_at",
         ]
         read_only_fields = ["author", "ad", "created_at"]
-

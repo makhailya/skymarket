@@ -36,4 +36,3 @@ class UserUpdateSerializer(serializers.ModelSerializer):
             "phone",
             "image",
         ]
-
