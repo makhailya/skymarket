@@ -87,7 +87,7 @@ if "test" in sys.argv or os.getenv("TESTING"):
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
-            "NAME": BASE_DIR / "test_db.sqlite3",
+            "NAME": BASE_DIR / "test_db.sqlite3",  # type: ignore[dict-item]
         }
     }
 
