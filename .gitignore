@@ -23,3 +23,7 @@ media/
 # Poetry
 poetry.lock
 
+#Docker
+.env
+.env.docker
+*.pyc
